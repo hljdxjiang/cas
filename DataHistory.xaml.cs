@@ -32,11 +32,9 @@ namespace TCS
         private void loadList() {
             using (var context = new TCSDbContext())
             {
-                DateTime currentDate = DateTime.Now;
-                DateTime thirtyDaysAgo = currentDate.AddDays(-30);
-                var list = context.FileInfos.Where(data => data.CreateTime >= thirtyDaysAgo).ToList();//只查30天以内的数据
+                var list = context.FileInfos.OrderByDescending(e => e.CreateTime).Take(100).ToList();
                 dataGrid.ItemsSource = list.ToArray();
-                //TODO 给dataGrid绑定list；
+    
             }
         }
 
