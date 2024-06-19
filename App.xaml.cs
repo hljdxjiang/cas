@@ -17,6 +17,7 @@ namespace TCS
             // 调用初始化数据库的方法
             DatabaseInitializer.init();
 
+            deleteHistoryData();
             // 继续应用程序启动逻辑
         }
 
