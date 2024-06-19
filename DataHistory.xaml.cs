@@ -17,7 +17,7 @@ using TCS.Entity;
 using TCS;
 using System.Collections.Generic;
 
-namespace IRM
+namespace TCS
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

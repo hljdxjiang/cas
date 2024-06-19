@@ -35,7 +35,7 @@ namespace TCS
 
         private void DataHistory_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new HistoryWIndow());
+            MainFrame.Navigate(new DataHistory());
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
