@@ -26,11 +26,13 @@ namespace TCS.EFCore
                 b.HasKey(p => p.ID);
                 b.HasIndex(p => p.FileId).IsUnique();
                 b.HasIndex(p => p.FileName);
+                b.Property(p => p.ID).ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<RecordInfo>(b => {
                 b.HasKey(p => p.ID);
                 b.HasIndex(p => p.FileId);
+                b.Property(p => p.ID).ValueGeneratedOnAdd();
             });
         }
     }

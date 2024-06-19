@@ -72,7 +72,7 @@ namespace TCS.Services
          */
         private void processLine(String line, String fileId, TCSDbContext context)
         {
-            String[] strs = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            String[] strs = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             if (strs.Length >= 8)
             {
                 RecordInfo record = new RecordInfo
@@ -84,9 +84,8 @@ namespace TCS.Services
                     Field = strs[3],
                     Moment = strs[4],
                     TimeStamp = strs[5],
-                    Coefficient = strs[6],
-                    FieldStatus = strs[7],
-                    MomentStatus = strs[8],
+                    FieldStatus = strs[6],
+                    MomentStatus = strs[7],
                 };
                 context.RecordInfos.Add(record);
             }

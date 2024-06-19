@@ -42,15 +42,26 @@ namespace TCS.Services
                                 Color = OxyColors.Red,
                                 LineJoin = OxyPlot.LineJoin.Bevel,
                                 StrokeThickness = 3,
-                                Title = "medium",
-                                MarkerType = MarkerType.Square, // 设置标记类型
-                                MarkerSize = 6,                 // 设置标记大小
-                                MarkerFill = OxyColors.Red    // 设置标记填充颜色
+                                //Title = "medium",
+                                //MarkerType = MarkerType.Square, // 设置标记类型
+                                //MarkerSize = 6,                 // 设置标记大小
+                                //MarkerFill = OxyColors.Red    // 设置标记填充颜色
                             };
                             dict.Add(info.Segment, val);
                         }
                         var xValue = Double.Parse(info.Field);
-                        var yvalue = Double.Parse(info.Moment) / Double.Parse(fileInfo.Weight) * 1000;
+                        var momentValue = 0D;
+                        var moments = info.Moment.Split(new char[] { 'E' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (moments.Length > 1)
+                        {
+                            momentValue = double.Parse(moments[0]) * Math.Pow(10, int.Parse(moments[1]));
+                        }
+                        else
+                        {
+                            momentValue = double.Parse(moments[0]);
+                        }
+                        var mo = Double.Parse(info.Moment);
+                        var yvalue = momentValue / Double.Parse(fileInfo.Weight) * 1000;
                         val.Points.Add(new DataPoint(xValue, yvalue));
                         list.Add(new DataGridItem
                         {
@@ -78,12 +89,12 @@ namespace TCS.Services
             plotModel = new PlotModel { Title = title, Legends = { }, IsLegendVisible = true };
             var xares = new LinearAxis
             {
-                Position = AxisPosition.Left,
+                Position = AxisPosition.Bottom,
                 Title = "Field(T)"
             };
             var yares = new LinearAxis
             {
-                Position = AxisPosition.Bottom,
+                Position = AxisPosition.Left,
                 Title = "Moment(×10\u207B\u00B5Am\u00B2/kg)",
             };
             plotModel.Axes.Add(xares);

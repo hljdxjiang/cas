@@ -9,7 +9,7 @@ namespace TCS.EFCore
 {
     class DatabaseInitializer
     {
-        public static string databasePath = "data/database.db";
+        public static string databasePath = "database.db";
         public static void init()
         {
             if (!File.Exists(databasePath))

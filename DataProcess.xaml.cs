@@ -48,14 +48,14 @@ namespace TCS
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (filePath.Equals(String.Empty))
+            if (file.Equals(String.Empty))
             {
                 var mbx = MessageBox.Show("请选择要处理的文件", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 if (mbx == MessageBoxResult.Yes) {
                     Button_Click(sender, e);
                 }
             }
-            if (weight.Equals(String.Empty)) {
+            if (weight.Text.Equals(String.Empty)) {
                 var mbx = MessageBox.Show("请输入样品质量", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 if (mbx == MessageBoxResult.Yes)
                 {

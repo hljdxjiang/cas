@@ -12,17 +12,17 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Height="40" Margin="20" VerticalAlignment="Top">
                 <Label x:Name="filePath" Content="文件路径:" Width="400"  Margin="0 5"/>
-                <Button Content="选择文件" Click="Button_Click" Margin="0 5" />
-                <Label x:Name="lable_input" Content="请输入样品质量:" Width="120" Margin="0,5"/>
-                <TextBlock x:Name="weight" Width="60" Height="20" ></TextBlock>
+                <Button Content="选择文件" Click="Button_Click" Margin="20 5" />
+                <Label x:Name="lable_input" Content="请输入样品质量:"  Margin="0,5"/>
+                <TextBox x:Name="weight" Width="60" Height="20" ></TextBox>
                 <Button Content="开始处理" Click="Button_Click_1" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="450" VerticalAlignment="Top">
                 <oxy:PlotView Height="450" Width="600" x:Name="plotView"></oxy:PlotView>
-                <DataGrid Name="dataGrid" Height="450" AutoGenerateColumns="False">
+                <DataGrid Name="dataGrid" Height="450" AutoGenerateColumns="False" Width="280">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Field(T)" Width="100" Binding="{Binding Field}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Moment(Am2/kg)" Width="200" Binding="{Binding Moment}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Moment(Am2/kg)" Width="180" Binding="{Binding Moment}"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
