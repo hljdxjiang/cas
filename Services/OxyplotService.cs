@@ -11,6 +11,7 @@ using TCS.EFCore;
 using TCS.Entity;
 using TCS.Tools;
 using OxyPlot.Series;
+using Microsoft.EntityFrameworkCore;
 
 namespace TCS.Services
 {
@@ -120,7 +121,10 @@ namespace TCS.Services
         {
             using (var context = new TCSDbContext())
             {
-                return context.RecordInfos.Where(x => x.FileId == fileId).ToList();
+                return context.RecordInfos.Where(x => x.FileId == fileId)
+                    .OrderBy(p=>p.Segment)
+                    .OrderBy(p=>EF.Functions
+                    .Like(p.Field,"%[^0-9.]%")?double.MaxValue:Convert.ToDouble(p.Field)).ToList();
             }
         }
 
