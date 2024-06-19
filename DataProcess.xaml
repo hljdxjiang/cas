@@ -1,0 +1,33 @@
+﻿<Page x:Class="TCS.DataProcess"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:oxy="http://oxyplot.org/wpf"
+  xmlns:local="clr-namespace:TCS"
+  mc:Ignorable="d"
+  Title="数据处理" Height="600" Width="885">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="40" Margin="20" VerticalAlignment="Top">
+                <Label x:Name="filePath" Content="文件路径:" Width="400"  Margin="0 5"/>
+                <Button Content="选择文件" Click="Button_Click" Margin="0 5" />
+                <Label x:Name="lable_input" Content="请输入样品质量:" Width="120" Margin="0,5"/>
+                <TextBlock x:Name="weight" Width="60" Height="20" ></TextBlock>
+                <Button Content="开始处理" Click="Button_Click_1" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="450" VerticalAlignment="Top">
+                <oxy:PlotView Height="450" Width="600" x:Name="plotView"></oxy:PlotView>
+                <DataGrid Name="dataGrid" Height="450" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Field(T)" Width="100" Binding="{Binding Field}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Moment(Am2/kg)" Width="200" Binding="{Binding Moment}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" x:Name="btns"></StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
