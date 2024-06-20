@@ -6,7 +6,7 @@
   xmlns:oxy="http://oxyplot.org/wpf"
   xmlns:local="clr-namespace:TCS"
   mc:Ignorable="d"
-  Title="数据处理" Height="600" Width="885">
+  Title="数据处理" Height="600" Width="900">
 
     <Grid>
         <StackPanel Orientation="Vertical">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:oxy="http://oxyplot.org/wpf"
         Loaded="History_Loaded"
-        Title="数据处理" Height="600" Width="850">
+        Title="数据处理" Height="650" Width="850">
     <Grid>
         
         <StackPanel Orientation="Vertical">
@@ -22,7 +22,7 @@
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" x:Name="btns"></StackPanel>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Margin="0 0 10 0">
                 <Button Content="关闭" Width="80" Click="Button_Close" Margin="30"></Button>
             </StackPanel>
         </StackPanel>
