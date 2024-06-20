@@ -43,18 +43,8 @@ namespace TCS.Services
                     if (info != null)
                     {
                         var xValue = Double.Parse(info.Field);
-                        var momentValue = 0D;
-                        var moments = info.Moment.Split(new char[] { 'E' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (moments.Length > 1)
-                        {
-                            momentValue = double.Parse(moments[0]) * Math.Pow(10, int.Parse(moments[1]));
-                        }
-                        else
-                        {
-                            momentValue = double.Parse(moments[0]);
-                        }
-                        var mo = Double.Parse(info.Moment);
-                        var yvalue = momentValue / Double.Parse(fileInfo.Weight) * 1000;
+                        
+                        var yvalue = Double.Parse(info.Moment) / Double.Parse(fileInfo.Weight) * 1000;
                         lineSeries.Points.Add(new DataPoint(xValue, yvalue));
                         list.Add(new DataGridItem
                         {
