@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:oxy="http://oxyplot.org/wpf"
-        Title="数据处理" Height="600" Width="850">
+        Loaded="History_Loaded"
+        Title="数据处理" Height="650" Width="900">
     <Grid>
         
         <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" Margin="20" VerticalAlignment="Top" Background="Gray">
+            <StackPanel Orientation="Horizontal" Height="30" Margin="0 20" VerticalAlignment="Top" Background="#999">
                 <Label x:Name="SegmentWeight" Content="样品重量:" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="450" VerticalAlignment="Top">
@@ -21,7 +22,7 @@
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" x:Name="btns"></StackPanel>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Margin="0 0 10 0">
                 <Button Content="关闭" Width="80" Click="Button_Close" Margin="30"></Button>
             </StackPanel>
         </StackPanel>

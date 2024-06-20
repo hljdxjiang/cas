@@ -29,41 +29,24 @@ namespace TCS.Services
             List<RecordInfo> recordInfos = GetRecordInfos(fileId);
             weight = fileInfo.Weight;
             if (recordInfos != null) {
-                LineSeries val = new LineSeries();
-                Dictionary<String, LineSeries> dict = new Dictionary<String, LineSeries>();
+                LineSeries lineSeries = new LineSeries
+                {
+                    Color = OxyColors.Red,
+                    LineJoin = OxyPlot.LineJoin.Bevel,
+                    StrokeThickness = 3,
+                    //Title = "medium",
+                    //MarkerType = MarkerType.Square, // 设置标记类型
+                    //MarkerSize = 6,                 // 设置标记大小
+                    //MarkerFill = OxyColors.Red    // 设置标记填充颜色
+                };
                 foreach (var info in recordInfos)
                 {
                     if (info != null)
                     {
-                        dict.TryGetValue(info.Segment, out val);
-                        if (val == null)
-                        {
-                            val = new LineSeries
-                            {
-                                Color = OxyColors.Red,
-                                LineJoin = OxyPlot.LineJoin.Bevel,
-                                StrokeThickness = 3,
-                                //Title = "medium",
-                                //MarkerType = MarkerType.Square, // 设置标记类型
-                                //MarkerSize = 6,                 // 设置标记大小
-                                //MarkerFill = OxyColors.Red    // 设置标记填充颜色
-                            };
-                            dict.Add(info.Segment, val);
-                        }
                         var xValue = Double.Parse(info.Field);
-                        var momentValue = 0D;
-                        var moments = info.Moment.Split(new char[] { 'E' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (moments.Length > 1)
-                        {
-                            momentValue = double.Parse(moments[0]) * Math.Pow(10, int.Parse(moments[1]));
-                        }
-                        else
-                        {
-                            momentValue = double.Parse(moments[0]);
-                        }
-                        var mo = Double.Parse(info.Moment);
-                        var yvalue = momentValue / Double.Parse(fileInfo.Weight) * 1000;
-                        val.Points.Add(new DataPoint(xValue, yvalue));
+                        
+                        var yvalue = Double.Parse(info.Moment) / Double.Parse(fileInfo.Weight) * 1000;
+                        lineSeries.Points.Add(new DataPoint(xValue, yvalue));
                         list.Add(new DataGridItem
                         {
                             Field = xValue.ToString(),
@@ -72,10 +55,8 @@ namespace TCS.Services
                     }
                 }
                 //将线加入到图片上
-                foreach (var keyValuePair in dict)
-                {
-                    plotModel.Series.Add(keyValuePair.Value);
-                }
+                plotModel.Series.Add(lineSeries);
+                
             }
         }
 
@@ -115,16 +96,14 @@ namespace TCS.Services
 
         /**
          * 
-         * 查询单个文件的数据
+         * 查询单个文件的详情数据
          */
         private List<RecordInfo> GetRecordInfos(String fileId)
         {
             using (var context = new TCSDbContext())
             {
-                return context.RecordInfos.Where(x => x.FileId == fileId)
-                    .OrderBy(p=>p.Segment)
-                    .OrderBy(p=>EF.Functions
-                    .Like(p.Field,"%[^0-9.]%")?double.MaxValue:Convert.ToDouble(p.Field)).ToList();
+                return context.RecordInfos
+                    .Where(x => x.FileId == fileId).ToList();
             }
         }
 

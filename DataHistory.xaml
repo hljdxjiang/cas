@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TCS"
         mc:Ignorable="d"
         Loaded="Page_Loaded"
-        Title="历史数据" Height="700" Width="1200">
+        Title="历史数据" Height="650" Width="900">
     <Grid>
         <DataGrid Name="dataGrid"  AutoGenerateColumns="False" VerticalAlignment="Top">
             <DataGrid.Columns>

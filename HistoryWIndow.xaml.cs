@@ -34,7 +34,12 @@ namespace TCS
             oxyplotService = new OxyplotService();
             
           }
-        
+
+        private void History_Loaded(object sender, RoutedEventArgs e)
+        {
+            Process();
+        }
+
         private void Process()
         {
             PlotModel plotModel = null;

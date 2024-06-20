@@ -6,10 +6,10 @@
   xmlns:oxy="http://oxyplot.org/wpf"
   xmlns:local="clr-namespace:TCS"
   mc:Ignorable="d"
-  Title="数据处理" Height="600" Width="885">
+  Title="数据处理" Height="650" Width="900">
 
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Height="650">
             <StackPanel Orientation="Horizontal" Height="40" Margin="20" VerticalAlignment="Top">
                 <Label x:Name="filePath" Content="文件路径:" Width="400"  Margin="0 5"/>
                 <Button Content="选择文件" Click="Button_Click" Margin="20 5" />
