@@ -81,7 +81,7 @@ namespace TCS
                 Margin = new Thickness(5)
             };
             //下载按钮绑定方法
-            downButtoon.Click += (sender, args) => download_click(plotModel);
+            downButtoon.Click += (sender, args) => download_click(plotModel,fileId);
             nextButtons.Children.Add(downButtoon);
             btns.Children.Clear();
             btns.Children.Add(nextButtons);
@@ -90,12 +90,12 @@ namespace TCS
             dataGrid.ItemsSource = list;
         }
 
-        private async void download_click(PlotModel plotModel)
+        private async void download_click(PlotModel plotModel,String fileid)
         {
             var result = new OpenFolderDialog();
             if (result.ShowDialog() ==true)
             {
-                var fileName = System.IO.Path.GetFileName(file) + ".svg";
+                var fileName = fileid + ".svg";
                 var outPath = result.FolderName;
 
                 if (!Directory.Exists(outPath))

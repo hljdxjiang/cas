@@ -21,5 +21,7 @@ namespace TCS.Entity
         public  String? FieldStatus { get; set; }
         public  String? MomentStatus { get; set; }
 
+        public required int Seqno { get; set; }
+
     }
 }

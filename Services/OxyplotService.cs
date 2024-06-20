@@ -77,7 +77,7 @@ namespace TCS.Services
             var yares = new LinearAxis
             {
                 Position = AxisPosition.Left,
-                Title = "Moment(×10\u207B\u00B5Am\u00B2/kg)",
+                Title = "Moment(Am\u00B2/kg)",
             };
             plotModel.Axes.Add(xares);
             plotModel.Axes.Add(yares);
@@ -103,7 +103,9 @@ namespace TCS.Services
             using (var context = new TCSDbContext())
             {
                 return context.RecordInfos
-                    .Where(x => x.FileId == fileId).ToList();
+                    .Where(x => x.FileId == fileId)
+                    .OrderBy(x=>x.Seqno)
+                    .ToList();
             }
         }
 

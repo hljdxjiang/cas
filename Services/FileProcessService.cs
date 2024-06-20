@@ -40,7 +40,7 @@ namespace TCS.Services
                             }
                             if (isBegin) {
                                 lineCnt++;
-                                processLine(line, fileId, context);
+                                processLine(line, fileId, context,lineCnt);
                             }
                         }
                     }
@@ -70,7 +70,7 @@ namespace TCS.Services
          * 
          * 保存单行记录
          */
-        private void processLine(String line, String fileId, TCSDbContext context)
+        private void processLine(String line, String fileId, TCSDbContext context,int seqno)
         {
             String[] strs = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             if (strs.Length >= 8)
@@ -79,6 +79,7 @@ namespace TCS.Services
                 {
                     FileId = fileId,
                     Step = strs[0],
+                    Seqno=seqno,
                     Iteration = strs[1],
                     Segment = strs[2],
                     Field = strs[3],
