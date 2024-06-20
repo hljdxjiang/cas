@@ -32,6 +32,7 @@ namespace TCS
         {
             InitializeComponent();
             oxyplotService = new OxyplotService();
+            this.Process();
             
           }
         
